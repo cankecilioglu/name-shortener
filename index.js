@@ -4,7 +4,7 @@
 // FeyyazNumanCavlak --> pascal case
 
 const expected_length = 5
-const fullname = "Feyyaz Numan Cavlak"
+const fullname = "Can Keçilioğlu"
 
 const fullname_length = fullname.length
 
@@ -31,6 +31,11 @@ if (fullname_length > expected_length) {
             break
         }
         if (i == splitted.length - 1) {
+            if (splitted[i].length <= expected_length) {
+                console.log("Selam")
+                console.log(splitted[i])
+                break
+            }
             console.log(`${splitted[i].slice(0, expected_length)}...`)
             break
         }
