@@ -3,9 +3,8 @@
 // feyyazNumanCavlak --> camel case
 // FeyyazNumanCavlak --> pascal case
 
-const expected_length = 5
+const expected_length = 10
 const fullname = "Can Keçilioğlu"
-
 const fullname_length = fullname.length
 
 const split_fullname = (element) => {
@@ -20,30 +19,24 @@ const should_continue = (arr) => {
     return arr.join(" ").length > expected_length
 }
 
-if (fullname_length > expected_length) {
-    let splitted = split_fullname(fullname)
-    let detailed = detailed_names(splitted)
-    // console.log(splitted)
-    // console.log(detailed)
-    for (let i = 0; i < detailed.length; i++) {
-        if (!should_continue(splitted)) {
-            console.log(splitted.join(" "))
-            break
-        }
-        if (i == splitted.length - 1) {
-            if (splitted[i].length <= expected_length) {
-                console.log("Selam")
-                console.log(splitted[i])
-                break
-            }
-            console.log(`${splitted[i].slice(0, expected_length)}...`)
-            break
-        }
-        if (splitted[i].length > 3) {
-            const new_word = `${splitted[i].charAt(0)}.`
-            splitted[i] = new_word
-        }
+let splitted = split_fullname(fullname)
+let detailed = detailed_names(splitted)
+
+for (let i = 0; i < detailed.length; i++) {
+    if (!should_continue(splitted)) {
+        console.log(splitted.join(" "))
+        break
     }
-} else {
-    console.log(fullname)
+    if (i == splitted.length - 1) {
+        if (splitted[i].length <= expected_length) {
+            console.log(splitted[i])
+            break
+        }
+        console.log(`${splitted[i].slice(0, expected_length)}...`)
+        break
+    }
+    if (splitted[i].length > 3) {
+        const new_word = `${splitted[i].charAt(0)}.`
+        splitted[i] = new_word
+    }
 }
